@@ -55,14 +55,34 @@ bool check_default_file() {
 // called once file exists
 bool parse_file(const std::string& filename) {
 
+	int wcount = 0;
+
 	std::string line;
 	std::fstream file(filename);
 
 	for(;std::getline(file, line);) {
-		std::cout << line << std::endl;
+		wcount += str_split(line, ' ');
 	}
 
+	std::cout << wcount << " words found" << std::endl;
+
 	return true;
+}
+
+// 
+int str_split(std::string& string, const char& delim) {
+
+	int wcount = 0;
+
+	std::string word;
+	std::stringstream stream(string);
+
+	for(;std::getline(stream, word, delim);) {
+		std::cout << word << std::endl;
+		wcount++;
+	}
+
+	return wcount;
 }
 
 int main() {

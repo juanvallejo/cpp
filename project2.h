@@ -34,4 +34,6 @@ bool check_default_file();
  */
 bool parse_file(const std::string& filename);
 
+int str_split(std::string& string, const char& delim);
+
 #endif
