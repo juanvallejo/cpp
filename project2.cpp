@@ -67,7 +67,8 @@ bool parse_file(const std::string& filename) {
 		wcount += str_split(line, ' ');
 	}
 
-	std::cout << wcount << " words found" << std::endl;
+	std::cout << wcount << " words found; " << words_added << " words added" << std::endl;
+	std::cout << WORDS[1].count << std::endl;
 
 	return true;
 }
@@ -105,7 +106,7 @@ bool parse_word(std::string& word) {
 
 	if(!init) {
 		WORDS[words_added].word = word;
-		WORDS[words_added++].count = 0;
+		WORDS[words_added++].count = 1;
 	}
 
 	return true;
