@@ -19,6 +19,11 @@
 
 const std::string DEFAULT_FILENAME = "TestData.txt";
 
+struct word {
+	std::string word;
+	int count;
+};
+
 /**
  * Asks user for custom filename, reads file
  */
@@ -35,5 +40,7 @@ bool check_default_file();
 bool parse_file(const std::string& filename);
 
 int str_split(std::string& string, const char& delim);
+
+bool parse_word(std::string& word);
 
 #endif

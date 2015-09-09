@@ -4,6 +4,9 @@
 
 #include "project2.h"
 
+word WORDS[100];
+int words_added = 0;
+
 // ask user for filename and parse
 bool check_user_file() {
 
@@ -69,7 +72,7 @@ bool parse_file(const std::string& filename) {
 	return true;
 }
 
-// 
+// split string
 int str_split(std::string& string, const char& delim) {
 
 	int wcount = 0;
@@ -78,11 +81,35 @@ int str_split(std::string& string, const char& delim) {
 	std::stringstream stream(string);
 
 	for(;std::getline(stream, word, delim);) {
-		std::cout << word << std::endl;
+		parse_word(word);
 		wcount++;
 	}
 
 	return wcount;
+}
+
+// count each word
+bool parse_word(std::string& word) {
+
+	int count = 0;
+	int arr_size = sizeof(WORDS) / sizeof(WORDS[0]);
+
+	bool init = false;
+
+	for(;count < arr_size; count++) {
+		if(WORDS[count].word == word) {
+			WORDS[count].count++;
+			init = true;
+		}
+	}
+
+	if(!init) {
+		WORDS[words_added].word = word;
+		WORDS[words_added++].count = 0;
+	}
+
+	return true;
+
 }
 
 int main() {
