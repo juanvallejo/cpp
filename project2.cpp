@@ -67,9 +67,16 @@ bool parse_file(const std::string& filename) {
 		wcount += str_split(line, ' ');
 	}
 
-	std::cout << wcount << " words found; " << words_added << " words added" << std::endl;
-	std::cout << WORDS[1].count << std::endl;
+	// open file for writing
+	std::ofstream fOutputArray(OUTPUTARRAY_FILENAME);
+	int fcount = 0;
 
+	// write contents of our array to file
+	for(fcount = 0; fcount < words_added; fcount++) {
+		fOutputArray << WORDS[fcount].word << ": " << WORDS[fcount].count << std::endl;
+	}
+
+	std::cout << wcount << " words found; " << words_added << " words added" << std::endl;
 	return true;
 }
 

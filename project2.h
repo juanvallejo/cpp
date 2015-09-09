@@ -17,7 +17,8 @@
 #include <sstream>
 #include <stdio.h>
 
-const std::string DEFAULT_FILENAME = "TestData.txt";
+const std::string DEFAULT_FILENAME 		= "TestData.txt";
+const std::string OUTPUTARRAY_FILENAME = "OutputArray.txt";
 
 struct word {
 	std::string word;

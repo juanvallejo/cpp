@@ -5,7 +5,10 @@ CFLAGS = -Wall -c
 LFLAGS = -Wall $(DEBUG)
 
 clean:
-	\rm *.o && rm -r ./build
+	\rm *.o && rm OutputArray.txt && rm -r ./build 2>&1>/dev/null
+
+rmoutput:
+	rm OutputArray.txt && Output.txt 2>&1>/dev/null
 
 all: project movebuild
 
