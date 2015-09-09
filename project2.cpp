@@ -4,6 +4,7 @@
 
 #include "project2.h"
 
+word WORDS[100];
 int words_added = 0;
 
 // ask user for filename and parse
@@ -58,7 +59,6 @@ bool check_default_file() {
 bool parse_file(const std::string& filename) {
 
 	int wcount = 0;
-	int nwcount = 0;
 
 	std::string line;
 	std::fstream file(filename);
@@ -67,24 +67,13 @@ bool parse_file(const std::string& filename) {
 		wcount += str_split(line, ' ');
 	}
 
-	// return to the beginning of file
-	file.clear();
-
-	// create array of words
-	word WORDS[100];
-
-	for(;std::getline(file, line);) {
-		std::cout << "fuck" << std::endl;
-		nwcount += str_split_parse(line, ' ', WORDS, wcount);
-	}
-
-	std::cout << wcount << " words found; " << nwcount << " words added" << std::endl;
+	std::cout << wcount << " words found; " << words_added << " words added" << std::endl;
 	std::cout << WORDS[1].count << std::endl;
 
 	return true;
 }
 
-// split string and only return number of words found
+// split string
 int str_split(std::string& string, const char& delim) {
 
 	int wcount = 0;
@@ -93,40 +82,22 @@ int str_split(std::string& string, const char& delim) {
 	std::stringstream stream(string);
 
 	for(;std::getline(stream, word, delim);) {
+		parse_word(word);
 		wcount++;
-	}
-
-	return wcount;	
-
-}
-
-// split string and parse words
-int str_split_parse(std::string& string, const char& delim, struct word *WORDS, int array_size) {
-
-	// number of non-repeating words
-	int wcount = 0;
-
-	std::string word;
-	std::stringstream stream(string);
-
-	for(;std::getline(stream, word, delim);) {
-		if(parse_word(word, WORDS, array_size)) {
-			wcount++;
-		}
 	}
 
 	return wcount;
 }
 
 // count each word
-// returns true if word is new or false if it exists
-bool parse_word(std::string& word, struct word *WORDS, int array_size) {
+bool parse_word(std::string& word) {
 
 	int count = 0;
+	int arr_size = sizeof(WORDS) / sizeof(WORDS[0]);
 
 	bool init = false;
 
-	for(;count < array_size; count++) {
+	for(;count < arr_size; count++) {
 		if(WORDS[count].word == word) {
 			WORDS[count].count++;
 			init = true;
@@ -138,7 +109,7 @@ bool parse_word(std::string& word, struct word *WORDS, int array_size) {
 		WORDS[words_added++].count = 1;
 	}
 
-	return !init;
+	return true;
 
 }
 

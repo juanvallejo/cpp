@@ -41,20 +41,11 @@ bool parse_file(const std::string& filename);
 
 /**
  * Split a string by a specified delimeter and only
- * return the amount of words found. Useful for counting
+ * return the amount of words found.
  */
 int str_split(std::string& string, const char& delim);
+int str_split_count(std::string& string, const char& delim);
 
-/**
- * Split string by a specified delimtere and parse each word
- * into a passed word struct array
- */
-int str_split_parse(std::string& string, const char& delim, struct word *WORDS, int array_size);
-
-/**
- * Puts each word into a passed struct array if the word
- * is new. Returns true if word doesn't exist, false otherwise.
- */
-bool parse_word(std::string& word, struct word *WORDS, int array_size);
+bool parse_word(std::string& word);
 
 #endif
