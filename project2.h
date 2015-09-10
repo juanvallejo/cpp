@@ -16,9 +16,11 @@
 #include <fstream>
 #include <sstream>
 #include <stdio.h>
+#include <algorithm>
 
 const std::string DEFAULT_FILENAME 		= "TestData.txt";
-const std::string OUTPUTARRAY_FILENAME = "OutputArray.txt";
+const std::string OUTPUTARRAY_FILENAME 	= "OutputArray.txt";
+const std::string OUTPUT_FILENAME 		= "Output.txt";
 
 struct word {
 	std::string word;
@@ -49,6 +51,14 @@ int str_split_count(std::string& string, const char& delim);
 
 bool parse_word(std::string& word);
 
-struct word sort_array();
+/**
+ * Return a lowercase copy of a string
+ */
+std::string toLower(std::string string);
+
+/**
+ * Sort an array alphabetically
+ */
+void sort_array();
 
 #endif

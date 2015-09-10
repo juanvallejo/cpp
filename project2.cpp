@@ -1,5 +1,6 @@
 /**
  * Project2 - Computer Science 427
+ * Juan Vallejo
  */
 
 #include "project2.h"
@@ -128,15 +129,48 @@ bool parse_word(std::string& word) {
 
 }
 
-struct word sort_array() {
+std::string toLower(std::string string) {
+	std::transform(string.begin(), string.end(), string.begin(), ::tolower);
+	return string;
+}
+
+void sort_array() {
 
 	int count = 0;
-	std::string lowest = "";
+
+	int wordamt = WORDS[0].count;
+	std::string lowest = WORDS[0].word;
 
 	for(count = 0; count < words_added; count++) {
-		// if(lowest == "" || (WORDS[count] < lowest && wordhasnotalreadybeenadded)) {
 
-		// }
+		bool word_exists = false;
+
+		for(int i = 0; i < words_added - words_remaining; i++) {
+			if(toLower(SORTED_WORDS[i].word) == toLower(WORDS[count].word)) {
+				word_exists = true;
+			}
+		}
+
+		if((toLower(WORDS[count].word) < toLower(lowest) && !word_exists)) {
+			lowest = WORDS[count].word;
+			wordamt = WORDS[count].count;
+		}
+	}
+
+	SORTED_WORDS[words_added - words_remaining].word = lowest;
+	SORTED_WORDS[words_added - words_remaining].count = wordamt;
+	words_remaining--;
+
+	if(words_remaining > 0) {
+		sort_array();
+	} else {
+
+		// done, save sorted array to file
+		std::ofstream fOutput(OUTPUT_FILENAME);
+
+		for(int c = 0; c < words_added; c++) {
+			fOutput << SORTED_WORDS[c].word << ": " << SORTED_WORDS[c].count << std::endl;
+		}
 	}
 }
 
