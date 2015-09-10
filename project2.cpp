@@ -34,6 +34,8 @@ bool check_user_file() {
 		exit(0);
 	}
 
+	fclose(file);
+
 	const std::string FILENAME = filename;
 
 	// assume input was valid, attempt to parse file
@@ -85,7 +87,6 @@ bool parse_file(const std::string& filename) {
 	// sort array alphabetically
 	sort_array();
 
-	std::cout << wcount << " words found; " << words_added << " words added" << std::endl;
 	return true;
 }
 
