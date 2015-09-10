@@ -5,7 +5,10 @@
 #include "project2.h"
 
 word WORDS[100];
+word SORTED_WORDS[100];
+
 int words_added = 0;
+int words_remaining = 0;
 
 // ask user for filename and parse
 bool check_user_file() {
@@ -76,8 +79,10 @@ bool parse_file(const std::string& filename) {
 		fOutputArray << WORDS[fcount].word << ": " << WORDS[fcount].count << std::endl;
 	}
 
+	words_remaining = words_added;
+
 	// sort array alphabetically
-	word SORTED_WORDS = sort_array();
+	sort_array();
 
 	std::cout << wcount << " words found; " << words_added << " words added" << std::endl;
 	return true;
@@ -124,7 +129,15 @@ bool parse_word(std::string& word) {
 }
 
 struct word sort_array() {
-	std::cout << "this is a test" << std::endl;
+
+	int count = 0;
+	std::string lowest = "";
+
+	for(count = 0; count < words_added; count++) {
+		// if(lowest == "" || (WORDS[count] < lowest && wordhasnotalreadybeenadded)) {
+
+		// }
+	}
 }
 
 int main() {
