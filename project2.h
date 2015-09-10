@@ -49,4 +49,6 @@ int str_split_count(std::string& string, const char& delim);
 
 bool parse_word(std::string& word);
 
+struct word sort_array();
+
 #endif

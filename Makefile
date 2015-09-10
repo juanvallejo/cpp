@@ -4,11 +4,11 @@ DEBUG = -g
 CFLAGS = -Wall -c
 LFLAGS = -Wall $(DEBUG)
 
-clean:
-	\rm *.o && rm OutputArray.txt && rm -r ./build 2>&1>/dev/null
+clean: rmoutput
+	if [[ -d build ]]; then rm build/*.o; rm -r ./build; fi; 2>/dev/null
 
 rmoutput:
-	rm OutputArray.txt && Output.txt 2>&1>/dev/null
+	 if [[ -f "OutputArray.txt" ]]; then rm OutputArray.txt; fi; if [[ -f "Output.txt" ]]; then rm Output.txt; fi;
 
 all: project movebuild
 
@@ -21,5 +21,5 @@ project2.o:
 movebuild:
 	mkdir -p ./build && mv *.o ./build && mv project build
 
-run: all
+run: rmoutput all
 	./build/project

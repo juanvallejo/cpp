@@ -76,6 +76,9 @@ bool parse_file(const std::string& filename) {
 		fOutputArray << WORDS[fcount].word << ": " << WORDS[fcount].count << std::endl;
 	}
 
+	// sort array alphabetically
+	word SORTED_WORDS = sort_array();
+
 	std::cout << wcount << " words found; " << words_added << " words added" << std::endl;
 	return true;
 }
@@ -118,6 +121,10 @@ bool parse_word(std::string& word) {
 
 	return true;
 
+}
+
+struct word sort_array() {
+	std::cout << "this is a test" << std::endl;
 }
 
 int main() {
