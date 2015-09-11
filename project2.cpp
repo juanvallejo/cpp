@@ -70,7 +70,9 @@ bool parse_file(const std::string& filename) {
 	std::fstream file(filename);
 
 	for(;std::getline(file, line);) {
-		wcount += str_split(line, ' ');
+		if(line != "") {
+			wcount += str_split(line, ' ');
+		}
 	}
 
 	// open file for writing
@@ -139,8 +141,8 @@ void sort_array() {
 
 	int count = 0;
 
-	int wordamt = 0;//WORDS[0].count;
-	std::string lowest = "";//WORDS[0].word;
+	int wordamt = 0;
+	std::string lowest = "";
 
 	for(count = 0; count < words_added; count++) {
 
@@ -170,7 +172,9 @@ void sort_array() {
 		std::ofstream fOutput(OUTPUT_FILENAME);
 
 		for(int c = 0; c < words_added; c++) {
-			fOutput << SORTED_WORDS[c].word << ": " << SORTED_WORDS[c].count << std::endl;
+			if(SORTED_WORDS[c].word != "") {
+				fOutput << SORTED_WORDS[c].word << ": " << SORTED_WORDS[c].count << std::endl;
+			}
 		}
 	}
 }
