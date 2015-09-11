@@ -5,8 +5,8 @@
 
 #include "project2.h"
 
-word WORDS[100];
-word SORTED_WORDS[100];
+word WORDS[1000];
+word SORTED_WORDS[1000];
 
 int words_added = 0;
 int words_remaining = 0;
@@ -139,20 +139,20 @@ void sort_array() {
 
 	int count = 0;
 
-	int wordamt = WORDS[0].count;
-	std::string lowest = WORDS[0].word;
+	int wordamt = 0;//WORDS[0].count;
+	std::string lowest = "";//WORDS[0].word;
 
 	for(count = 0; count < words_added; count++) {
 
 		bool word_exists = false;
 
-		for(int i = 0; i < words_added - words_remaining; i++) {
+		for(int i = 0; i < words_added - words_remaining && !word_exists; i++) {
 			if(toLower(SORTED_WORDS[i].word) == toLower(WORDS[count].word)) {
 				word_exists = true;
 			}
 		}
 
-		if((toLower(WORDS[count].word) < toLower(lowest) && !word_exists)) {
+		if((lowest == "" || toLower(WORDS[count].word) < toLower(lowest)) && !word_exists) {
 			lowest = WORDS[count].word;
 			wordamt = WORDS[count].count;
 		}

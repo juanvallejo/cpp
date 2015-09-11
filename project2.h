@@ -18,7 +18,7 @@
 #include <stdio.h>
 #include <algorithm>
 
-const std::string DEFAULT_FILENAME 		= "TestData.txt";
+const std::string DEFAULT_FILENAME 		= "TestData1.txt";
 const std::string OUTPUTARRAY_FILENAME 	= "OutputArray.txt";
 const std::string OUTPUT_FILENAME 		= "Output.txt";
 
