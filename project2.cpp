@@ -3,6 +3,7 @@
  * Juan Vallejo
  */
 
+#define _CRT_SECURE_NO_DEPRECATE
 #include "project2.h"
 
 Word WORDS[1000];
@@ -58,7 +59,7 @@ bool check_default_file() {
 	if(file) {
 		fclose(file);
 	}
-	
+
 	return parse_file(DEFAULT_FILENAME);
 
 }
