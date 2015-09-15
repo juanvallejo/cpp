@@ -22,7 +22,7 @@ const std::string DEFAULT_FILENAME 		= "TestData.txt";
 const std::string OUTPUTARRAY_FILENAME 	= "OutputArray.txt";
 const std::string OUTPUT_FILENAME 		= "Output.txt";
 
-struct word {
+struct Word {
 	std::string word;
 	int count;
 };
