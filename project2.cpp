@@ -27,14 +27,14 @@ bool check_user_file() {
 	FILE *file = fopen(filename.c_str(), "r");
 
 	if(filename == "" || !file) {
-		fclose(file);
 		return check_user_file();
 	} else if(filename == "X") {
-		fclose(file);
 		exit(0);
 	}
 
-	fclose(file);
+	if(file) {
+		fclose(file);
+	}
 
 	const std::string FILENAME = filename;
 
@@ -50,13 +50,15 @@ bool check_default_file() {
 
 	// determine if default file exists
 	if(!file) {
-		fclose(file);
 		return check_user_file();
 	}
 
 	// assume file exists beyond this line
 	// read file contents line by line
-	fclose(file);
+	if(file) {
+		fclose(file);
+	}
+	
 	return parse_file(DEFAULT_FILENAME);
 
 }
