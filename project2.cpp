@@ -8,8 +8,6 @@
 word WORDS[1000];
 word SORTED_WORDS[1000];
 
-word *TEST = 0;
-
 int words_added = 0;
 int words_remaining = 0;
 
@@ -76,8 +74,6 @@ bool parse_file(const std::string& filename) {
 			wcount += str_split(line, ' ');
 		}
 	}
-
-	std::cout << (TEST[0].word) << std::endl;
 
 	// open file for writing
 	std::ofstream fOutputArray(OUTPUTARRAY_FILENAME);
