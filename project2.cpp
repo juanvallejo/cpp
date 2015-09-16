@@ -1,6 +1,10 @@
 /**
- * Project2 - Computer Science 427
- * Juan Vallejo
+ * ReadFile - Attempts to open a default file "TestData.txt", or user specified
+ * file if default does not exist, parse file by reading each line, counting the
+ * amount of times each word occurs, outputting this list into "OutputArray.txt",
+ * alphabetizing this list, and outputting the final sorted array to "Output.txt"
+ *
+ * @juanvallejo
  */
 
 #define _CRT_SECURE_NO_DEPRECATE
@@ -12,7 +16,13 @@ Word SORTED_WORDS[1000];
 int words_added = 0;
 int words_remaining = 0;
 
-// ask user for filename and parse
+/**
+ * Ask user for custom filename and check to see
+ * if file exists by attempting to open the file
+ * for reading. Program will keep asking for a
+ * filename if invalid, or exit if a capital or
+ * lowercase 'X' character is entered.
+ */
 bool check_user_file() {
 
 	std::cout << "Please enter a filename: ";
@@ -44,6 +54,11 @@ bool check_user_file() {
 
 }
 
+/**
+ * Check to see if default file "TestData.txt" exists in
+ * project directory and parse it. If file doesn't exist,
+ * ask user for custom file name.
+ */
 bool check_default_file() {
 
 	// open default file for reading
@@ -140,6 +155,10 @@ std::string toLower(std::string string) {
 	return string;
 }
 
+/**
+ * Attempts to sort array of words parsed from file
+ * alphabetically
+ */
 void sort_array() {
 
 	int count = 0;
@@ -182,6 +201,10 @@ void sort_array() {
 	}
 }
 
+/**
+ * Init program by checking to see if default file
+ * can be opened, read, and parsed
+ */
 int main() {
 	check_default_file();
 	return 0;
